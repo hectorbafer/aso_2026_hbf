@@ -5,3 +5,4 @@
 ### [UT01: Introducción y preparación del entorno](ut01/index.md)
 ### [UT02: Administración remota del sistema](ut02/index.md)
 ### [UT03: Scripting en Bash](ut03/index.md)
+### [UT04: Scripting en PowerShell](ut04/index.md)
