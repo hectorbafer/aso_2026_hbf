@@ -1,23 +1,24 @@
-# EJERCICIOS BLOQUE 1
+# --- EJERCICIOS BLOQUE 1 ---
 
-# Ejercicio 1
+# - Ejercicio 1
 #$recurso = 8080
-#$recurso.GetType().Name
+#Write-Host $recurso.GetType()
 #$recurso = "Puerto HTTP"
-#$recurso.GetType().Name
+#Write-Host $recurso.GetType()
 
-# Ejercicio 2
-#[int]$maxConexiones = "Cien"
-#[bool]$firewallActivo = $true
+# - Ejercicio 2
+#[int]$maxConexiones = 100
+#Write-Host $maxConexiones.GetType()
+#$maxConexiones = "Cien"
 
-# Ejercicio 3
-#[int64]$tamanoBackup = 2199023255552L
-#Write-Host "$tamanoBackup Bytes"
+# - Ejercicio 3
+#[long]$tamanoBackup = 2199023255552
+#Write-Host $tamanoBackup.GetType()
 
-#[decimal]$costeLicencia = 149.95d
-#[decimal]$iva = 31.49d
+#$costeLicencia = 149.95d
+#$iva = 31.49d
 
 #$totalFactura = $costeLicencia + $iva
 #Write-Host "Resultado: $totalFactura"
 
-# Ejercicio 4
+# - Ejercicio 4
