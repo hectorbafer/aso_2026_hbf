@@ -14,10 +14,10 @@
 #[int64]$tamanoBackup = 2199023255552L
 #Write-Host "$tamanoBackup Bytes"
 
-[decimal]$costeLicencia = 149.95d
-[decimal]$iva = 31.49d
+#[decimal]$costeLicencia = 149.95d
+#[decimal]$iva = 31.49d
 
-$totalFactura = $costeLicencia + $iva
-Write-Host "Resultado: $totalFactura"
+#$totalFactura = $costeLicencia + $iva
+#Write-Host "Resultado: $totalFactura"
 
 # Ejercicio 4
