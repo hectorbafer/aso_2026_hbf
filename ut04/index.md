@@ -2,5 +2,6 @@
 
 ### [PR0401: Canalización, objetos y formato en PowerShell](pr0401/pr0401.md)
 ### [PR0402: Variables, tipos de datos y colecciones en Powershell](pr0402/pr0402.md)
+### [PR0403: Manipulación de cadenas](pr0403/pr0403.md)
 
 [Volver a la página principal](../index.md)
