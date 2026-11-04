@@ -22,3 +22,13 @@
 #Write-Host "Resultado: $totalFactura"
 
 # - Ejercicio 4
+$fechaActual = Get-Date
+
+Write-Host "Es el año " + $fechaActual.Year
+Write-Host "La contraseña caducará en " + $fechaActual.AddDays(45)
+
+$inicio = Get-Date
+Start-Sleep -Seconds 3
+$fin = Get-Date
+[timespan]$tiempoTotal = $fin - $inicio
+Write-Host $tiempoTotal
