@@ -5,3 +5,4 @@ $logCrudo = @"
 [CRITICAL] ID:1001 :: 01-11-2023_10:20 :: User:ROOT :: Action:Service_Stop
 "@
 
+$logCrudo.Split(::)
