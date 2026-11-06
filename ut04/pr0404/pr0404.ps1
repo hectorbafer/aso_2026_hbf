@@ -5,4 +5,6 @@ $logCrudo = @"
 [CRITICAL] ID:1001 :: 01-11-2023_10:20 :: User:ROOT :: Action:Service_Stop
 "@
 
-$logCrudo.Split(::)
+$linea -split "::"
+$logCrudo.Substring(1,0).Replace("/","-").Replace("_"," ")
+$logCrudo.Replace("ROOT","administrador")
