@@ -1,0 +1,4 @@
+﻿"Metodo","Ruta","IP","Agente","CodigoError"
+"POST","/api/v1/auth/login","192.168.10.***","Mozilla/5.0","0040"
+"DELETE","/api/v1/admin/drop_table","172.16.254.***","ScriptBot/1.2","0500"
+"GET","/api/v1/user/profile","192.168.10.***","Firefox/109.0","0403"
