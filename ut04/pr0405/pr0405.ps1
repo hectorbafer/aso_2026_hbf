@@ -6,3 +6,17 @@ GET /api/v1/user/profile?id=9921&token=xyz [IP: 192.168.10.102] [Agent: Firefox/
 "@
 
 $lineas = $logsWeb.Split("`n")
+
+$separador = $linea -split "["
+$peticion = $separador[0]
+$ip = $separador[1]
+$agente = $separador[2]
+$fallo = $separador[3]
+
+# Ignorar el error de OK
+if($fallo -eq "OK"){
+    continue
+}
+
+$agente = $agente.Replace("Agent: ","").Trim()
+Write-Host $agente
