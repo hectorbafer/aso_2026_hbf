@@ -7,16 +7,56 @@ GET /api/v1/user/profile?id=9921&token=xyz [IP: 192.168.10.102] [Agent: Firefox/
 
 $lineas = $logsWeb.Split("`n")
 
-$separador = $linea -split "["
-$peticion = $separador[0]
-$ip = $separador[1]
-$agente = $separador[2]
-$fallo = $separador[3]
+$parametros=foreach($linea in $lineas){
+    if($lineas.Contains("[ERR-0200-OK]")){
+        continue
+    }
 
-# Ignorar el error de OK
-if($fallo -eq "OK"){
-    continue
+    # Extrayendo metodo
+    $espacio = $linea.IndexOf(" ")
+    $metodo = $linea.Substring(0,"$espacio")
+    $linea = $linea.Substring($espacio).Trim()
+
+    # Extrayendo url
+    $espacio = $linea.IndexOf(" ")
+    $url = $linea.Substring(0,$espacio)
+    $url = $url.Split("?")[0]
+    $linea = $linea.Substring($espacio).Trim()
+
+    # Extrayendo IP
+    $linea = $linea -Split "] \["
+    $ip = $lista[0]
+    $agente = $lista[1]
+    $err = $lista[2]
+    
+    $ip = $ip.Replace("[IP: ", "")
+
+    # Sustituir octeto
+    $ip = $ip.Split(".")
+    $octeto1 = $ip[0]
+    $octeto2 = $ip[1]
+    $octeto3 = $ip[2]
+    $octeto4 = $ip[3]
+    $octeto4 = "***"
+    $ip = $octeto1+"."+$octeto2+"."+$octeto3+"."+$octeto4
+    
+    # Extrayendo error
+    $err = $err.Split(".")
+    $codigo=$err[1]
+    Write-Host $codigo
+
+    # Extrayendo agente
+    $agente = $agente.Split(".")
+    $agentelimpio = $agente[1]
+    Write-Host $agentelimpio
+
+    [PSCustomObject]@{
+        Method = $metodo
+        CleanPath = $url
+        Maskedip = $ip
+        ErrorCode = $codigo
+        Agente = $agentelimpio
+    }
 }
 
-$agente = $agente.Replace("Agent: ","").Trim()
-Write-Host $agente
+$parametros | Export-Csv -Path "auditoria-web.csv" -Encoding UTF8 -NoTypeInformation
