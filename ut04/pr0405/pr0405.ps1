@@ -8,7 +8,7 @@ GET /api/v1/user/profile?id=9921&token=xyz [IP: 192.168.10.102] [Agent: Firefox/
 $lineas = $logsWeb.Split("`n")
 
 $parametros=foreach($linea in $lineas){
-    if($lineas.Contains("[ERR-0200-OK]")){
+    if($linea.Contains("[ERR-0200-OK]")){
         continue
     }
 
@@ -24,7 +24,7 @@ $parametros=foreach($linea in $lineas){
     $linea = $linea.Substring($espacio).Trim()
 
     # Extrayendo IP
-    $linea = $linea -Split "] \["
+    $lista = $linea -Split "] \["
     $ip = $lista[0]
     $agente = $lista[1]
     $err = $lista[2]
@@ -41,13 +41,14 @@ $parametros=foreach($linea in $lineas){
     $ip = $octeto1+"."+$octeto2+"."+$octeto3+"."+$octeto4
     
     # Extrayendo error
-    $err = $err.Split(".")
-    $codigo=$err[1]
+    $err = $err.Replace("]", "").Trim()
+    $errPartes = $err.Split("-")
+    $codigo = $errPartes[1]
     Write-Host $codigo
 
     # Extrayendo agente
-    $agente = $agente.Split(".")
-    $agentelimpio = $agente[1]
+    $agente = $agente.Replace("Agent: ", "").Replace("]", "").Trim()
+    $agentelimpio = $agente
     Write-Host $agentelimpio
 
     [PSCustomObject]@{
@@ -59,4 +60,4 @@ $parametros=foreach($linea in $lineas){
     }
 }
 
-$parametros | Export-Csv -Path "auditoria-web.csv" -Encoding UTF8 -NoTypeInformation
+$parametros | Export-Csv -Path "auditoria_web.csv" -Encoding UTF8 -NoTypeInformation
