@@ -5,5 +5,6 @@
 ### [PR0403: Manipulación de cadenas](pr0403/pr0403.md)
 ### [PR0404: Limpieza de logs](pr0404/pr0404.md)
 ### [PR0405: Limpieza de logs (II)](pr0405/pr0405.md)
+### [PR0406: Normalización y senamiento de inventario de red](pr0406/pr0406.md)
 
 [Volver a la página principal](../index.md)
